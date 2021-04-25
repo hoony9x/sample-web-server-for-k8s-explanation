@@ -27,12 +27,12 @@ class SampleController{
 
         return mapOf(
             "message" to "Hello Everyone!",
-            "version" to "2.0"
+            "version" to "3.0"
         )
     }
 
     @GetMapping("/api/health-check")
     fun healthCheck(): ResponseEntity<Map<String, String>> {
-        return ResponseEntity(mapOf("message" to "alive"), HttpStatus.OK)
+        return ResponseEntity(mapOf("message" to "Has a problem"), HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }
