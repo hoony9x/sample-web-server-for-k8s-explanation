@@ -27,7 +27,7 @@ class SampleController{
 
         return mapOf(
             "message" to "Hello Everyone!",
-            "version" to "1.0"
+            "version" to "2.0"
         )
     }
 
