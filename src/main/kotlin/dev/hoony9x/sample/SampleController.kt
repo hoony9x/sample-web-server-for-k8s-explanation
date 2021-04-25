@@ -2,6 +2,8 @@ package dev.hoony9x.sample
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
@@ -27,5 +29,10 @@ class SampleController{
             "message" to "Hello Everyone!",
             "version" to "1.0"
         )
+    }
+
+    @GetMapping("/api/health-check")
+    fun healthCheck(): ResponseEntity<Map<String, String>> {
+        return ResponseEntity(mapOf("message" to "alive"), HttpStatus.OK)
     }
 }
