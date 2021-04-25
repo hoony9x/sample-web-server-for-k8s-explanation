@@ -17,22 +17,24 @@ class SampleController{
 
     @GetMapping("/api/hello")
     fun hello(request: HttpServletRequest, @RequestHeader headers: Map<String, String>): Map<String, String> {
-        log.info(mapOf(
-            "remote_ip" to request.remoteAddr,
-            "path" to request.requestURI,
-            "method" to request.method,
-            "headers" to headers,
-            "queries" to request.queryString
-        ).toString())
+        throw RuntimeException("Intentionally created Exception")
 
-        return mapOf(
-            "message" to "Hello Everyone!",
-            "version" to "3.0"
-        )
+//        log.info(mapOf(
+//            "remote_ip" to request.remoteAddr,
+//            "path" to request.requestURI,
+//            "method" to request.method,
+//            "headers" to headers,
+//            "queries" to request.queryString
+//        ).toString())
+
+//        return mapOf(
+//            "message" to "Hello Everyone!",
+//            "version" to "4.0"
+//        )
     }
 
     @GetMapping("/api/health-check")
     fun healthCheck(): ResponseEntity<Map<String, String>> {
-        return ResponseEntity(mapOf("message" to "Has a problem"), HttpStatus.INTERNAL_SERVER_ERROR)
+        return ResponseEntity(mapOf("message" to "alive"), HttpStatus.OK)
     }
 }
